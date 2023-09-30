@@ -41,6 +41,7 @@ import org.springframework.security.web.SecurityFilterChain
 @Configuration(proxyBeanMethods = false)
 class DefaultSecurityConfig {
     private val LOGIN_MOBILE_PAGE_URI = "/loginmobile"
+    private val END_SESSION_ENDPOINT = "/connect/**"
 
     @Bean
     @Throws(Exception::class)
@@ -60,6 +61,7 @@ class DefaultSecurityConfig {
          */
 
         http.authorizeHttpRequests { authorize -> authorize.requestMatchers(LOGIN_MOBILE_PAGE_URI).permitAll()
+                                                           .requestMatchers(END_SESSION_ENDPOINT).permitAll()
                                                            .anyRequest().authenticated()
                                     }
             .formLogin(withDefaults())

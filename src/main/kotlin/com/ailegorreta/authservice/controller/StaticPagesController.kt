@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RequestParam
  *
  * @project: auth-service
  * @author: rlh
- * @date: March 2023
+ * @date: September 2023
  */
 @Controller
 class StaticPagesController {
@@ -52,16 +52,16 @@ class StaticPagesController {
     fun logout( @RequestParam(required = false) post_logout_redirect_uri: String? = null,
                 model: Model): String {
         if (!post_logout_redirect_uri.isNullOrBlank())
-            if (post_logout_redirect_uri.contains("iamui"))
-                model.addAttribute("iamui", post_logout_redirect_uri)
-            else if (post_logout_redirect_uri.contains("sysui"))
-                model.addAttribute("sysui", post_logout_redirect_uri)
-            else if (post_logout_redirect_uri.contains("usfui"))
-                model.addAttribute("udfui", post_logout_redirect_uri)
-            else if (post_logout_redirect_uri.contains("acmeui"))
-                model.addAttribute("acmeui", post_logout_redirect_uri)
-            else if (post_logout_redirect_uri.contains("carteraui"))
-                model.addAttribute("carteraui", post_logout_redirect_uri)
+            if (post_logout_redirect_uri.contains("iam-ui"))
+                model.addAttribute("iam", post_logout_redirect_uri)
+            else if (post_logout_redirect_uri.contains("sys-ui"))
+                model.addAttribute("sys", post_logout_redirect_uri)
+            else if (post_logout_redirect_uri.contains("usf-ui"))
+                model.addAttribute("udf", post_logout_redirect_uri)
+            else if (post_logout_redirect_uri.contains("acme-ui"))
+                model.addAttribute("acme", post_logout_redirect_uri)
+            else if (post_logout_redirect_uri.contains("cartera-ui"))
+                model.addAttribute("cartera", post_logout_redirect_uri)
 
         return "logout"
     }

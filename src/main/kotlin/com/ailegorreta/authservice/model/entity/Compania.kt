@@ -34,6 +34,7 @@ import java.time.LocalDateTime
  * Entity Compania.
  *
  * The Companies must match with the Companies back office system.
+ *
  * We use ElementId instead of Long type in order to keep out the Repository warning from SDN Neo4j and for
  * future Neo4j version gor generated values or in a future version generate UIID types
  *

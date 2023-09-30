@@ -64,7 +64,7 @@ import java.util.stream.Collectors
  *
  * @project : auth-service
  * @author rlh
- * @date August 2023
+ * @date September 2023
  */
 @Configuration(proxyBeanMethods = false)
 class AuthorizationServerConfig {
@@ -129,15 +129,6 @@ class AuthorizationServerConfig {
         val registeredClientRepository = JdbcRegisteredClientRepository(jdbcTemplate)
 
         // Add if not exist all registered clients
-        val iamui = build3ScopesRegisteredClient(
-            registeredClientRepository,
-            "iamui",
-            "8190",
-            UIApplications.secret("iamui")!!,
-            "iam.compania",
-            "iam.facultad",
-            "iam.estadistica"
-        )
         val udfui = build1ScopesRegisteredClient(
             registeredClientRepository,
             "udfui",
@@ -178,16 +169,6 @@ class AuthorizationServerConfig {
             registeredClientRepository,
             "preference",
             UIApplications.secret("preference")!!,
-            "cartera.read"
-        )
-        val audit = build5ScopesRegisteredMicroService(
-            registeredClientRepository,
-            "audit",
-            UIApplications.secret("audit")!!,
-            "sys.facultad",
-            "acme.facultad",
-            "iam.facultad",
-            "iam.compania",
             "cartera.read"
         )
         val udf = build1ScopesRegisteredMicroService(
@@ -238,6 +219,15 @@ class AuthorizationServerConfig {
             "secret2",
             "messagex"
         )
+        val iamUi = build3ScopesRegisteredClient(
+            registeredClientRepository,
+            "iam-ui",
+            "8190",
+            UIApplications.secret("iam-ui")!!,
+            "iam.compania",
+            "iam.facultad",
+            "iam.estadistica"
+        )
         val iamService = build3ScopesRegisteredMicroService(
             registeredClientRepository,
             "iam-service",
@@ -252,7 +242,17 @@ class AuthorizationServerConfig {
             UIApplications.secret("param-service")!!,
             "sys.facultad"
         )
-        val cacheSeervice = build5ScopesRegisteredMicroService(
+        val auditService = build5ScopesRegisteredMicroService(
+            registeredClientRepository,
+            "audit-service",
+            UIApplications.secret("audit-service")!!,
+            "sys.facultad",
+            "acme.facultad",
+            "iam.facultad",
+            "iam.compania",
+            "cartera.read"
+        )
+        val cacheService = build5ScopesRegisteredMicroService(
             registeredClientRepository,
             "cache-service",
             UIApplications.secret("cache-service")!!,
@@ -282,10 +282,11 @@ class AuthorizationServerConfig {
             "iam.facultad"
         )
         // TODO if works with JDBC repository delete this comment. See bellow
-        // return InMemoryRegisteredClientRepository(iamui, udfui, carteraui, sysui, acmeui,
-        //                                           preference, udf, cartera, param, mail, bub, expediente,
+        // return InMemoryRegisteredClientRepository(udfui, carteraui, sysui, acmeui,
+        //                                           preference, udf, cartera, mail, bup, expediente,
         //                                           firstClient, secondClient,
-        //                                           iamService, paramService, cacheService,
+        //                                           iamUi,
+        //                                           iamService, paramService, cacheService, auditService,
         //                                           gatewayService, testService, testServiceReactive)
         return registeredClientRepository
     }

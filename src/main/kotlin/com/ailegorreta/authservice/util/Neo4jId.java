@@ -31,9 +31,12 @@ import java.lang.annotation.Annotation;
 /**
  * Neo4jId subclass of ElementId in order to be used by the Neo4jIdTypeConverter class
  *
+ * note: This class is repeated in auth-service microservice just to avoid that auth-service need to import
+ *       queryDsl libraries.
+ *
  * @project : auth-service
  * @author rlh
- * @date May 2023
+ * @date September 2023
  */
 public class Neo4jId implements Id, Serializable {
 

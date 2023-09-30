@@ -48,8 +48,8 @@ import org.springframework.security.core.GrantedAuthority
  *                 To estrange things it sends a different error by the jdbc driver:
  *                 java.lang.ClassCastException: class java.lang.String cannot be cast to class org.springframework.security.core.GrantedAuthority
  *                 because the .deserialize from fasterxml.
- *                 To solve the problem (partially) we define attributes with @jsonIgnoreand also take care for
- *                 for the size in this attribute.
+ *                 To solve the problem (partially) we define attributes with @jsonIgnore and also take care for
+ *                 the size in this attribute.
  *
  * We use ElementId instead of Long type in order to keep out the Repository warning from SDN Neo4j and for
  * future Neo4j version gor generated values or in a future version generate UIID types.

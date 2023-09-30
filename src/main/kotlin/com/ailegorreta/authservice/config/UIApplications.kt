@@ -28,25 +28,25 @@ package com.ailegorreta.authservice.config
  *
  * @author rlh
  * @project : auth-service
- * @date August 2023
+ * @date September 2023
  */
 class UIApplications() {
 
     companion object {
-        private val validApplications = mutableMapOf("iamui" to "iamuisecret",
-                                                     "udfui" to "udfuisecret",
+        private val validApplications = mutableMapOf("udfui" to "udfuisecret",
                                                      "carteraui" to "carterauisecret",
                                                      "sysui" to "sysuisecret",
                                                      "sysuimob" to "sysuimobsecret",
                                                      "acmeui" to "acmeuisecret",
                                                      "preference" to "preferencesecret",
-                                                     "audit" to "auditsecret",
                                                      "udf" to "udfsecret",
                                                      "cartera" to "carterasecret",
                                                      "mail" to "mailsecret",
                                                      "bup" to "bupsecret",
                                                      "expediente" to "expedientesecret",
+                                                     "iam-ui" to "iam-ui-secret",
                                                      "param-service" to "param-service-secret",
+                                                     "audit-service" to "audit-service-secret",
                                                      "iam-service" to "iam-service-secret",
                                                      "cache-service" to "cache-service-secret",
                                                      "gateway-service" to "gateway-service-secret",

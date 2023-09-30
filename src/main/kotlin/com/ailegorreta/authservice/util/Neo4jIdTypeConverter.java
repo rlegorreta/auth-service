@@ -34,6 +34,9 @@ import java.util.*;
 /**
  * Converter from Neo4j driver integer value to Neo4jId
  *
+ * note: This class is repeated in auth-service microservice just to avoid that auth-service need to import
+ *       queryDsl libraries.
+ *
  * @project : auth-server
  * @author rlh
  * @date May 2023

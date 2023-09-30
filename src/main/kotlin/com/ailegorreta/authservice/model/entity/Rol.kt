@@ -41,21 +41,27 @@ import java.time.LocalDateTime
  *
  * @author rlh
  * @project : auth-service
- * @date August 2023
+ * @date September 2023
  *
  */
 @Node("Rol")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator::class, property = "id")
-data class Rol (@Id @GeneratedValue(GeneratedValue.InternalIdGenerator::class) var id: String,
-           @Property(name = "idRol") 			   var idRol: Long,
-           @Property(name = "nombre") 			   var nombre: String,
-           @Property(name = "activo")
-           @JsonProperty("activo") 		           var activo: Boolean,
-           @Property(name = "usuarioModificacion") var usuarioModificacion: String,
-           @LastModifiedDate
-           @Property(name = "fechaModificacion")   var fechaModificacion: LocalDateTime,
-           @Relationship(type = "TIENE_FACULTAD", direction = Relationship.Direction.OUTGOING)
-                                                   var facultades: LinkedHashSet<Facultad>?): GrantedAuthority {
+data class Rol (@Id @GeneratedValue(GeneratedValue.InternalIdGenerator::class)
+                @JsonProperty("id")                    var id: String ,
+                @JsonProperty("idRol")
+                @Property(name = "idRol") 			   var idRol: Long,
+                @JsonProperty("nombre")
+                @Property(name = "nombre") 			   var nombre: String,
+                @JsonProperty("activo")
+                @Property(name = "activo")	           var activo: Boolean,
+                @JsonProperty("usuarioModificacion")
+                @Property(name = "usuarioModificacion") var usuarioModificacion: String,
+                @LastModifiedDate
+                @JsonProperty("fechaModificacion")
+                @Property(name = "fechaModificacion")   var fechaModificacion: LocalDateTime,
+                @JsonProperty("facultades")
+                @Relationship(type = "TIENE_FACULTAD", direction = Relationship.Direction.OUTGOING)
+                                                        var facultades: LinkedHashSet<Facultad>?): GrantedAuthority {
 
     @JsonProperty("authority")
     override fun getAuthority() = "ROLE_" + nombre.uppercase()
